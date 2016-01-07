@@ -6,7 +6,7 @@
 /*   By: bdesbos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/22 15:56:33 by bdesbos           #+#    #+#             */
-/*   Updated: 2016/01/07 22:38:31 by pgourran         ###   ########.fr       */
+/*   Updated: 2016/01/08 00:21:29 by pgourran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,33 @@ int		ft_check_bloc(int x, int y, char **ette, t_bloc *bloc)
 	return (0);
 }
 
-int		ft_isok(t_bloc *blocs, char **sqf, int i)
+int		ft_isok(int x, int y, t_bloc *blocs, char **sqf, int i)
 {
+/*	while (!(ft_check_bloc(x, y, sqf, blocs[i])
+		{
+		if (!(sqf[y][++x]))
+		{
+			x = 0;
+			if (!(sqf[++y][x]))
+			{
+				if (!(blocs[i + 1]))
+					ft_del_bloc(x, y
+				*/
+	if (ft_check_bloc(x, y, sqf, blocs[i]))
+	{
+		ft_place_bloc(x, y sqf, blocs[i]);
+		ft_isok(blocs, sqf, ++i);
+	}
+	else if (sqf[y][x + 1])
+		ft_isok(++x, y, blocs, sqf, i);
+	else if (sqf[y + 1][0])
+		ft_isok(0, ++y, blocs, sqf, i);
+	else if (
+	else
+		return (0);
+	return (1);
+
+
 	
 }
 

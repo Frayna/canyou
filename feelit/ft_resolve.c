@@ -6,7 +6,7 @@
 /*   By: bdesbos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/22 15:56:33 by bdesbos           #+#    #+#             */
-/*   Updated: 2016/01/07 21:10:38 by pgourran         ###   ########.fr       */
+/*   Updated: 2016/01/07 21:39:23 by pgourran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	**ft_make_sq(int edge)
 			ft_error();
 		i++;
 	}
-	ette[i] = '\0';
+	ette[i] = NULL;
 	return (ette);
 }
 
@@ -52,25 +52,25 @@ void	ft_free_sq(char **sq)
 
 void	ft_place_bloc(int x, int y, char **ette, t_bloc *bloc)
 {
-	ette[y][x] = bloc.letter;
-	ette[y + bloc.d2y][x + bloc.d2x] = bloc.letter;
-	ette[y + bloc.d3y][x + bloc.d3x] = bloc.letter;
-	ette[y + bloc.d4y][x + bloc.d4x] = bloc.letter;
+	ette[y][x] = bloc->letter;
+	ette[y + bloc->d2y][x + bloc->d2x] = bloc->letter;
+	ette[y + bloc->d3y][x + bloc->d3x] = bloc->letter;
+	ette[y + bloc->d4y][x + bloc->d4x] = bloc->letter;
 }
 
 void	ft_del_bloc(int x, int y, char **ette, t_bloc *bloc)
 {
 	ette[y][x] = '.';
-	ette[y + bloc.d2y][x + bloc.d2x] = '.';
-	ette[y + bloc.d3y][x + bloc.d3x] = '.';
-	ette[y + bloc.d4y][x + bloc.d4x] = '.';
+	ette[y + bloc->d2y][x + bloc->d2x] = '.';
+	ette[y + bloc->d3y][x + bloc->d3x] = '.';
+	ette[y + bloc->d4y][x + bloc->d4x] = '.';
 }
 
 int		ft_check_bloc(int x, int y, char **ette, t_bloc *bloc)
 {
-	if (ette[y][x] = '.' && ette[y + bloc.d2y][x + bloc.d2x] = '.' &&
-			ette[y + bloc.d3y][x + bloc.d3x] = '.' &&
-			ette[y + bloc.d4y][x + bloc.d4x] = '.')
+	if (ette[y][x] == '.' && ette[y + bloc->d2y][x + bloc->d2x] == '.' &&
+			ette[y + bloc->d3y][x + bloc->d3x] == '.' &&
+			ette[y + bloc->d4y][x + bloc->d4x] == '.')
 		return (1);
 	return (0);
 }
@@ -83,4 +83,5 @@ char	**ft_resolve(t_bloc *blocs, int nb)
 	tc = ft_defsizeminsq(nb);
 	sqf = ft_make_sq(tc);
 
+	return(sqf);
 }

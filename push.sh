@@ -1,6 +1,4 @@
-lol= ''
-date | lol
-echo lol
+read com
 git add *
-git commit -m lol
+git commit -m com
 git push

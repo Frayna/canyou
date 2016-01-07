@@ -4,7 +4,7 @@ echo "**********************\n\n"
 
 echo "/ Put your Commit \\"
 echo '\n'
-read com
+read -p '        ' com
 git add *
 git commit -m $com
 git push

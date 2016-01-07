@@ -1,4 +1,9 @@
+echo "**********************"
+echo "**     Git Push     **"
+echo "**********************\n\n"
+
+echo "// Put your Commit \\\\\n"
 read com
 git add *
 git commit -m $com
-git push 
+git push

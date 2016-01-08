@@ -13,7 +13,5 @@ echo "**********************"
 git status
 echo ''
 echo ''
-{
-git commit -m $com
+git commit -m $com &>/dev/null
 git push
-} &>/dev/null

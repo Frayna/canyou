@@ -1,7 +1,7 @@
 echo "**********************"
 echo "**     Git Push     **"
-echo "**********************\n"
-
+echo "**********************"
+echo '\n'
 echo " / Put your Commit \\"
 read -p '         ' com
 git add *

@@ -6,7 +6,7 @@
 /*   By: bdesbos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/22 15:56:33 by bdesbos           #+#    #+#             */
-/*   Updated: 2016/01/14 18:19:43 by pgourran         ###   ########.fr       */
+/*   Updated: 2016/01/14 19:27:58 by pgourran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,37 +75,24 @@ int		ft_check_bloc(int x, int y, char **ette, t_bloc *bloc)
 	return (0);
 }
 
-int		ft_isok(int x, int y, t_bloc *blocs, char **sqf, int i, int j)
+int		ft_isok(int x, int y, t_bloc *blocs, char **sqf, int i)
 {
-/*	while (!(ft_check_bloc(x, y, sqf, blocs[i])
-		{
-		if (!(sqf[y][++x]))
-		{
-			x = 0;
-			if (!(sqf[++y][x]))
-			{
-				if (!(blocs[i + 1]))
-					ft_del_bloc(x, y
-				*/
-	if (!(blocs[i]))
+	if (!(&blocs[i]))
 		return (1);
-	if (ft_check_bloc(x, y, sqf, blocs[i]))
+	if (ft_check_bloc(x, y, sqf, &blocs[i]))
 	{
-		ft_place_bloc(x, y sqf, blocs[i]);
-		if (ft_isok(blocs, sqf, i + 1))
+		ft_place_bloc(x, y, sqf, &blocs[i]);
+		if (ft_isok(x, y, blocs, sqf, i + 1))
 			return (1);
-		ft_del_bloc();
+		ft_del_bloc(x, y, sqf, &blocs[i]);
 	}
-	else if (sqf[y][x + 1] && (ft_isok(x + 1, y, blocs, sqf, i))
+	if (sqf[y][x + 1] && (ft_isok(x + 1, y, blocs, sqf, i)))
 			return (1);
-	else if (sqf[y + 1][0] && ft_isok(0, y + 1, blocs, sqf, i))
+	if (sqf[y + 1][0] && ft_isok(0, y + 1, blocs, sqf, i))
 		return (1);
-	else if (ft_isok(x, y, sqf, blocs[i + 1]))
+	if (ft_isok(x, y, &blocs[i], sqf, i))
 		return (1);
 	return (0);
-
-
-	
 }
 
 char	**ft_resolve(t_bloc *blocs, int nb)
@@ -115,7 +102,7 @@ char	**ft_resolve(t_bloc *blocs, int nb)
 
 	tc = ft_defsizeminsq(nb);
 	sqf = ft_make_sq(tc);
-	while (!(ft_isok(blocs, sqf, 0)))
+	while (!(ft_isok(0, 0, blocs, sqf, 0)))
 	{
 		ft_free_sq(sqf);
 		sqf = ft_make_sq(++tc);
